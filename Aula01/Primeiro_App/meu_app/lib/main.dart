@@ -8,16 +8,27 @@ void main() {
 
 // Define o widget principal da aplicação.
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   // Construtor do widget MyApp.
   @override
   Widget build(BuildContext context) {
     // Retorna o MaterialApp, que é a base para aplicativos com estilo Material Design.
     return MaterialApp(
-      home: Scaffold( // Scaffold fornece uma estrutura básica para uma tela, com barra de app, corpo e outros elementos.
-        appBar: AppBar( // Define a barra superior (AppBar) com o título do aplicativo.
-          title: Text('Hello World App'), // Título exibido na AppBar.
+      home: Scaffold(
+        // Scaffold fornece uma estrutura básica para uma tela, com barra de app, corpo e outros elementos.
+        appBar: AppBar(
+          // Define a barra superior (AppBar) com o título do aplicativo.
+          title: Text(
+            'Whatsapp',
+            style: TextStyle(
+              color: Color.fromRGBO(255, 255, 255, 1),
+              
+            ),
+          ),backgroundColor: Color.fromRGBO(0, 255, 64, 1), // Título exibido na AppBar.
         ),
-        body: Center( // Centraliza os widgets filhos na tela.
+        body: Center(
+          // Centraliza os widgets filhos na tela.
           child: Text(
             'Olá, Mundo!', // Exibe o texto "Olá, Samuel!" no centro da tela.
           ),
