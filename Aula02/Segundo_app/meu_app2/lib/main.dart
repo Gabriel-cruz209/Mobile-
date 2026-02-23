@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const Myapp());
+  runApp(const MyApp());
 }
 
-class Myapp extends StatelessWidget {
-  const Myapp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,13 @@ class _PaginaContadorState extends State<PaginaContador> {
 
   void diminuir() {
     setState(() {
-      numero--;
+      if (numero > 0) numero--;
+    });
+  }
+
+  void zerar() {
+    setState(() {
+      numero = 0;
     });
   }
 
@@ -49,29 +55,46 @@ class _PaginaContadorState extends State<PaginaContador> {
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
-      body: Center(child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Text("Contagem Atual", style: TextStyle(fontSize: 18),),
-          Text("$numero",
-          style: const TextStyle(
-            fontSize: 80, fontWeight: FontWeight.bold,
-            color: Colors.indigo,
-          ),)
-        ],
-      ) ,),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text("Contagem Atual", style: TextStyle(fontSize: 18)),
+            Text(
+              "$numero",
+              style: const TextStyle(
+                fontSize: 80,
+                fontWeight: FontWeight.bold,
+                color: Colors.indigo,
+              ),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: Row(
+        mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(onPressed: diminuir,
-          backgroundColor: Colors.red,
-          child: const Icon(Icons.remove, color: Colors.white,),),
-          
+          FloatingActionButton(
+            onPressed: diminuir,
+            backgroundColor: Colors.red,
+            child: const Icon(Icons.remove, color: Colors.white),
+          ),
+
           const SizedBox(width: 15),
 
-          FloatingActionButton(onPressed: aumentar,
-          backgroundColor: Colors.green,
-          child: const Icon(Icons.add, color: Colors.white,),)
+          FloatingActionButton(
+            onPressed: aumentar,
+            backgroundColor: Colors.green,
+            child: const Icon(Icons.add, color: Colors.white),
+          ),
+
+const SizedBox(width: 15),
+          FloatingActionButton(
+            onPressed: zerar,
+            backgroundColor: const Color.fromARGB(255, 107, 107, 107),
+            child: const Text("Zerar" , style: TextStyle(color: Colors.white)),
+          ),
         ],
       ),
     );
