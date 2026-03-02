@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
-
 void main() {
   runApp(MaterialApp(home: PaginaNumeros(), debugShowCheckedModeBanner: false));
 }
@@ -16,7 +15,7 @@ class _PaginaNumerosState extends State<PaginaNumeros> {
 
   void sortear() {
     setState(() {
-      numero = Random().nextInt(11);
+      numero = Random().nextInt(101);
     });
   }
 
@@ -28,7 +27,9 @@ class _PaginaNumerosState extends State<PaginaNumeros> {
 
   void diminuir() {
     setState(() {
-      numero--;
+      if (numero > 0) {
+        numero--;
+      }
     });
   }
 
@@ -41,16 +42,37 @@ class _PaginaNumerosState extends State<PaginaNumeros> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Meu Aplicativo")),
+      appBar: AppBar(title: Text("Meu Aplicativo", style: TextStyle(color: Colors.white),), backgroundColor: Colors.black,),
       body: Center(
         child: Text('Numero: $numero', style: TextStyle(fontSize: 30)),
       ),
-      floatingActionButton: Row(children: [
-        FloatingActionButton(onPressed: somar, backgroundColor: Colors.green, child: Icon(Icons.add),),
-        FloatingActionButton(onPressed: diminuir, backgroundColor: Colors.red, child: Icon(Icons.remove),),
-        FloatingActionButton(onPressed: zerar, backgroundColor: Colors.blueGrey, child: Text("Zerar", style: TextStyle(color: Colors.black),),),
-        FloatingActionButton(onPressed: sortear, backgroundColor: Colors.purple, child: Text("Random", style: TextStyle(color: Colors.white),),),
-      ],),
+      floatingActionButton: Row(
+        children: [
+          FloatingActionButton(
+            onPressed: somar,
+            backgroundColor: Colors.green,
+            child: Icon(Icons.add),
+          ),
+          const SizedBox(width: 15),
+          FloatingActionButton(
+            onPressed: diminuir,
+            backgroundColor: Colors.red,
+            child: Icon(Icons.remove),
+          ),
+          const SizedBox(width: 15),
+          FloatingActionButton(
+            onPressed: zerar,
+            backgroundColor: Colors.blueGrey,
+            child: Text("Zerar", style: TextStyle(color: Colors.black)),
+          ),
+          const SizedBox(width: 15),
+          FloatingActionButton(
+            onPressed: sortear,
+            backgroundColor: Colors.purple,
+            child: Text("Random", style: TextStyle(color: Colors.white)),
+          ),
+        ],
+      ),
     );
   }
 }
