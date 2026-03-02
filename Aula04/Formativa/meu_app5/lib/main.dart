@@ -68,16 +68,7 @@ class _TodoPageState extends State<TodoPage> {
           Expanded(
             child: Tarefas.isEmpty
                 ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(Icons.list_alt, size: 50, color: Colors.grey),
-                        Text(
-                          "Nenhuma tarefa por aqui!",
-                          style: TextStyle(color: Colors.grey, fontSize: 18),
-                        ),
-                      ],
-                    ),
+                    child: Text("Nehuma Tarefa Adicionada!", style: TextStyle(fontSize: 18, color: Colors.grey),),
                   )
                 : ListView.builder(
                     itemCount: Tarefas.length,
