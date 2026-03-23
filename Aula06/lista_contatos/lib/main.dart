@@ -21,9 +21,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────
-// Modelo de dados
-// ─────────────────────────────────────────────
+
 class Contato {
   final String nome;
   final String telefone;
